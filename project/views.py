@@ -25,7 +25,7 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return HttpResponse ("Succesful")
+            return HttpResponse ("Login Succesful!!!")
 
         else:
             return HttpResponse("Invalid Username or Password")

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login and register</title>
     {% load static%}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/auth.css'%}">
     <style>
         body {
             background: url("{% static 'img/auth.png' %}") no-repeat center center/cover;
@@ -60,12 +60,12 @@
                 </div>
                 <button type="submit">Sign Up</button>
                 <div class="signUp-link">
-                    <p>Already have an account?<a href="#" class="signinBtn-link"> Sign in</a></p>
+                    <p>Already have an account?<a href="{% url 'login' %}" class="signinBtn-link"> Sign in</a></p>
                 </div>
             </form>
         </div>
     </div>
-    <script src="{% static 'js/script.js'%}"></script>
+    <script src="{% static 'js/auth.js'%}"></script>
 </body>
 
 </html>

@@ -25,9 +25,12 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return HttpResponse ("Login Succesful!!!")
+            return render (request, 'index.html')
 
         else:
             return HttpResponse("Invalid Username or Password")
         
     return render(request, 'auth.html')
+
+def home(request):
+    return render(request, 'index.html')

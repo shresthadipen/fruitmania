@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="available" id="Available" style="margin-top: 50px;">
+    <h1><span>Available</span></h1>
+    <div class="av_box">
+        
+        {% for fruits in fruits %}
+        {% if fruits.stock > 0 %}
+        <div class="av_card" style="cursor: pointer;">
+            <div class="av_image">
+                <img src="{{ fruits.image.url }}" alt="{{fruits.name}}">
+            </div>
+            <div class="av_info">
+                <h2>{{fruits.name}}</h2>
+                <h4>{{ fruits.description }}</h4>
+                <h4 style="margin-top: -10px; margin-bottom: 20px;"><strong>Stock :</strong> {{fruits.stock}} kg</h4>
+                <h3 style="margin-top: -100px;">Rs.{{fruits.price}} per kg</h3>
+                <a href="{% url 'add_to_cart' fruits.id %}" class="av_btn">Add to cart</a>
+            </div> 
+        </div>
+        {% else %}
+        <div class="av_card" style="cursor: pointer;">
+            <div class="av_image">
+                <img src="{{ fruits.image.url }}" alt="{{fruits.name}}">
+            </div>
+            <div class="av_info">
+                <h2>{{fruits.name}}</h2>
+                <h4>{{ fruits.description }}</h4>
+                <h4 style="margin-top: -10px; margin-bottom: 20px;"><strong>Out of stock</strong></h4>
+                <h3 style="margin-top: -100px;">Rs.{{fruits.price}} per kg</h3>
+                <a href="#" class="av_btn">Add to cart</a>
+            </div>
+        </div>
+
+        {% endif %}
+        {% endfor %}
+        
+    </div>
+</div>
+
+{% endblock %}

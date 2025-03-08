@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+    <div class="profile-card">
+            <p>Username: {{ user.username }}</p>
+            <p>Email: {{ user.email }}</p>
+            <a href="#" class="edit-btn">Edit Profile</a>
+            <a href="#" class="edit-btn">Change Password</a>
+    </div>
+</div>
+{% endblock %}

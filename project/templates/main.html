@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruits Mania</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    {% block extra_css %}
+    {% endblock %}
+</head>
+
+<body>
+    <section id="Home">
+        <nav>
+            <div class="logo">
+                <img src="{% static 'img/image.png.png' %}" alt="">
+            </div>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'available' %}">Available</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'profile' %}">{{user.username|capfirst}}</a>
+                </li>
+                <li>
+                    <a href="{% url 'order' %}">Order</a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">Log out</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'login' %}">Log in</a>
+                </li>
+                {% endif %}
+            </ul>
+            <div class="icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <a href="{% url 'cart' %}"><i class="fa-solid fa-cart-shopping"></i></a>
+
+            </div>
+        </nav>
+        
+        {% block content %}
+        {% endblock %}
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer_content">
+                <h2>Location</h2>
+                <p>Bagmati Province</p>
+                <p>Kathmandu, Nepal</p>
+            </div>
+            <div class="footer_content">
+                <h2>Contact Us</h2>
+                <p>Phone no: 9863029955</p>
+                <p>Email: subashkatwal10@gmail.com</p>
+                <p>Email: kishormaharjan775@gmail.com</p>
+                <p>Address: Kalanki</p>
+            </div>
+            <div class="footer_content">
+                <h2>Our Services</h2>
+                <p>Fast Delivery</p>
+                <p>Easy Payment</p>
+                <p>24 Hour Services</p>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2025 Your Website. All rights reserved</p>
+        </div>
+    </footer>
+</body>
+
+</html>

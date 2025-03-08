@@ -1,344 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'main.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fruits Mania</title>
-    {% load static%}
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.0/typed.js"></script>
-</head>
-
-<body>
-    <section id="Home">
-        <nav>
-            <div class="logo">
-                <img src="{% static 'img/image.png.png' %}" alt="">
-            </div>
-            <ul>
-                <li><a href="#Home">Home</a></li>
-                <li><a href="#About">About</a></li>
-                <li><a href="#Available">Available</a></li>
-                <li><a href="#Order">Order</a></li>
-                <li><a href="#Contact">Contact</a></li>
-            </ul>
-            <div class="icon">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-        </nav>
-        <div class="main">
-            <div class="men_text">
-                <h1>Fruits <span>Mania</span></h1>
-                <h2>Available here: <br><span class="typing"></span></h2>
-            </div>
-            <div class="main_image">
-                <img src="{% static 'img/image.png.png' %}" alt="">
-            </div>
-        </div>
-        <p>Fruits are natural foods that come from plants.
-            They are often sweet or sour and are packed with vitamins, minerals, and fiber, which help keep our bodies
-            healthy.
-            Fruits grow on trees, bushes, or vines and are usually eaten raw, although they can also be cooked or dried.
-            Common examples of fruits include apples, bananas, oranges, berries, and mangoes.
-            Eating a variety of fruits is good for overall health, as they provide essential nutrients and help keep our
-            immune system strong.</p>
-
-        <div class="main_btn">
-            <a href="#">Order Now</a>
-            <i class="fa-solid fa-angle-right"></i>
-        </div>
-
-
-
-
-    </section>
-    <script src="{% static 'js/script.js' %}"></script>
-
-    <!--------------------About-->
-    <div class="about" id="About">
-        <div class="about_main">
-            <div class="about_text">
-                <h1>About <span>Us</span></h1>
-                <h3>Why choose Us</h3>
-                <p>At Fruits Mania, we offer a simple and convenient way to enjoy fresh, high-quality fruits delivered
-                    right to your door. With a wide variety of handpicked, nutritious fruits at affordable prices, we
-                    ensure every order is carefully packed and delivered properly. We deliver only the freshest and best
-                    quality fruits. Our commitment to excellent customer service, eco-friendly packaging, and
-                    sustainable sourcing means you can shop with confidence and enjoy the best nature has to offer,
-                    hassle-free.
-                </p>
-            </div>
-        </div>
-        <a href="#Order" class="about_btn">Add To Cart</a>
+{% block content %}
+<div class="main">
+    <div class="men_text">
+        <h1>Fruits <span>Mania</span></h1>
+        <h2>Available here: <br><span class="typing"></span></h2>
     </div>
-
-
-    <!-------Available-->
-    <div class="available" id="Available">
-        <h1>Today's<span>Available</span></h1>
-        <div class="av_box">
-
-
-            <div class="av_card">
-                <div class="av_image">
-                    <img src="{% static 'img/appleimg.png' %}" alt="">
-                </div>
-                <div class="av_info">
-                    <h2>Apple</h2>
-                    <p>Apples are a good source of vitamin C, which boosts the immune system and promotes skin health.
-                        They also contain small amounts of vitamin A, which helps regulate blood pressure.</p>
-                    <h3>Rs.250 per kg</h3>
-                    <div class="av_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="av_btn">Add to cart</a>
-                </div>
-            </div>
-            <div class="av_card">
-                <div class="av_image">
-                    <img src="{% static 'img/bananaimg.png' %}" alt="">
-                </div>
-                <div class="av_info">
-                    <h2>Banana</h2>
-                    <p>Bananas are an excellent source of potassium, which helps maintain healthy blood pressure and
-                        muscle function. They also provide vitamin B6, which supports brain health and boost energy.</p>
-                    <h3>Rs.150 per dozen</h3>
-                    <div class="av_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="av_btn">Add to cart</a>
-                </div>
-            </div>
-
-            <div class="av_card">
-                <div class="av_image">
-                    <img src="{% static 'img/orangeimg.png' %}" alt="">
-                </div>
-                <div class="av_info">
-                    <h2>Orange</h2>
-                    <p>Oranges are rich in vitamin C, which strengthens the immune system and promotes healthy skin.
-                        They also provide potassium for heart health, as well as small amounts of fiber and vitamin A.
-                    </p>
-                    <h3>Rs.100 per kg</h3>
-                    <div class="av_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="av_btn">Add to cart</a>
-                </div>
-            </div>
-
-            <div class="av_card">
-                <div class="av_image">
-                    <img src="{% static 'img/strawberryimg.png' %}" alt="">
-                </div>
-                <div class="av_info">
-                    <h2>Strawberry</h2>
-                    <p>Strawberries are an excellent source of vitamin C, which helps boost the immune system and
-                        promote healthy skin. They also provide manganese, which supports bone health .</p>
-                    <h3>Rs.120 per kg</h3>
-                    <div class="av_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="av_btn">Add to cart</a>
-                </div>
-            </div>
-
-            <div class="av_card">
-                <div class="av_image">
-                    <img src="{% static 'img/kiwiimg.png' %}" alt="">
-                </div>
-                <div class="av_info">
-                    <h2>Kiwi</h2>
-                    <p>Kiwi is rich in vitamin C, which supports immune function and skin health. It also provides a
-                        good amount of vitamin K, which is essential for blood clotting and bone health.</p>
-                    <h3>Rs.300 per kg</h3>
-                    <div class="av_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="av_btn">Add to cart</a>
-                </div>
-            </div>
-
-            <div class="av_card">
-                <div class="av_image">
-                    <img src="{% static 'img/mangoimg.png' %}" alt="">
-                </div>
-                <div class="av_info">
-                    <h2>Mango</h2>
-                    <p>Mangoes are rich in vitamin C, which supports the immune system and skin health. They also
-                        provide a good amount of vitamin A in the form of beta-carotene, which promotes healthy vision
-                        and skin.</p>
-                    <h3>Rs.250 per kg</h3>
-                    <div class="av_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="av_btn">Add to cart</a>
-                </div>
-            </div>
-
-            <div class="av_card">
-                <div class="av_image">
-                    <img src="{% static 'img/watermelonimg.png' %}" alt="">
-                </div>
-                <div class="av_info">
-                    <h2>Watermelon</h2>
-                    <p>Watermelon is a great source of vitamin C, which boosts immune function and skin health. It also
-                        contains vitamin A in the form of beta-carotene, which supports vision.</p>
-                    <h3>Rs.100 per kg</h3>
-                    <div class="av_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="av_btn">Add to cart</a>
-                </div>
-            </div>
-
-            <div class="av_card">
-                <div class="av_image">
-                    <img src="{% static 'img/pineappleimg.png' %}" alt="">
-                </div>
-                <div class="av_info">
-                    <h2>Pineapple</h2>
-                    <p>Pineapple is rich in vitamin C, which boosts the immune system and promotes healthy skin. It also
-                        provides manganese, an essential mineral that supports bone health .</p>
-                    <h3>Rs.180 per kg</h3>
-                    <div class="av_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="av_btn">Add to cart</a>
-                </div>
-            </div>
-
-        </div>
+    <div class="main_image">
+        <img src="{% static 'img/image.png.png' %}" alt="">
     </div>
+</div>
+<p>Fruits are natural foods that come from plants.
+    They are often sweet or sour and are packed with vitamins, minerals, and fiber, which help keep our bodies
+    healthy.
+    Fruits grow on trees, bushes, or vines and are usually eaten raw, although they can also be cooked or dried.
+    Common examples of fruits include apples, bananas, oranges, berries, and mangoes.
+    Eating a variety of fruits is good for overall health, as they provide essential nutrients and help keep our
+    immune system strong.</p>
+
+<div class="main_btn">
+    <a href="#">Order Now</a>
+    <i class="fa-solid fa-angle-right"></i>
+</div>
 
 
 
-    <!----------------order box-->
-    <div class="order" id="Order">
-        <h1>Order <span>Now</span></h1>
-        <div class="order_main">
-            <div class="order_image">
-                <img src="{% static 'img/imageOrder.png' %}" alt="">
+
+</section>
+<script src="{% static 'js/script.js' %}"></script>
+
+
+<div class="available" id="Available">
+    <h1><span>Available</span></h1>
+    <div class="av_box">
+
+        {% for fruit in fruits %}
+        <div class="av_card" style="cursor: pointer;">
+            <div class="av_image">
+                <img src="{{ fruit.image.url }}" alt="{{ fruit.name }}">
             </div>
-            <form action="#">
-                <div class="input">
-                    <p>Name</p>
-                    <input type="text" placeholder="Your Name">
-                </div>
-                <div class="input">
-                    <p>Email</p>
-                    <input type="email" placeholder="Your Email">
-                </div>
-                <div class="input">
-                    <p>Number</p>
-                    <input placeholder="Your Number">
-                </div>
-                <div class="input">
-                    <p>How Much</p>
-                    <input type="number" placeholder="How many order">
-                </div>
-                <div class="input">
-                    <p>Your Order</p>
-                    <input placeholder="Product Name">
-                </div>
-                <div class="input">
-                    <p>Address</p>
-                    <input placeholder="Your Address">
-                </div>
-                <a href="#Order" class="order_btn">Order Now</a>
-            </form>
+            <div class="av_info">
+                <h2>{{ fruit.name }}</h2>
+                <h4>{{ fruit.description }}</h4>
+                <h3>Rs.{{ fruit.price }} per kg</h3>
+                <a href="{% url 'add_to_cart' fruit.id %}" class="av_btn">Add to cart</a>
+            </div> <!-- closing av_info div -->
         </div>
+        {% endfor %}
+
     </div>
+</div>
 
 
-    <!--------contact-->
-
-    <div class="contact" id="Contact">
-        <h1>Contact<span>us</span></h1>
-        <div class="container">
-            <div class="container_box">
-                <div class="left">
-                    <div class="right">
-                        <input type="text" class="field" placeholder="Your Name">
-                        <input type="text" class="field" placeholder="Your Email">
-                        <input type="text" class="field" placeholder="Phone">
-                        <textarea placeholder="Message" class="field"></textarea>
-                        <button class="contact_btn">Send</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!--------------footer-->
-
-        <footer>
-            <div class="container">
-
-                <div class="footer_content">
-                    <h2>Location</h2>
-                    <p>Bagmati Province</p>
-                    <p>Kathmandu,Nepal</p>
-
-                </div>
-
-                <div class="footer_content">
-                    <h2>Contact Us</h2>
-                    <p>Phone no:9863029955</p>
-                    <p>Email:subashkatwal10@gmail.com</p>
-                    <p>Email:kishormaharjan775@gmail.com</p>
-                    <p>Address:Kalanki</p>
-
-                </div>
-                <div class="footer_content">
-                    <h2>Our Services</h2>
-                    <p>Fast Delivery</p>
-                    <p>Easy Payment</p>
-                    <p>24 Hour Services</p>
-                </div>
-
-            </div>
-            <div class="bottom-bar">
-                <p>&copy:2025 your website. All rights reserved</p>
-            </div>
-        </footer>
-
-</body>
-
-</html>
+{% endblock %}

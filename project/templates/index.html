@@ -8,13 +8,13 @@
             <h1>Fruits <span>Mania</span></h1>
         </div>
         <div class="main_image" style="margin-right: 200px;">
-            <img src="{{ fruits.1.image.url }}" alt="{{ fruits.1.name }}" class="product-image" style="width: 700px; height: 700px;">
+            <img src="{{ fruit.image.url }}" alt="{{ fruit.name }}" class="product-image" style="width: 700px; height: 700px;">
         
         </div>
     </div>
-    <h3 class="product-description" style="margin-top: -450px; margin-bottom: 200px; margin-left: 200px; width:650px; font-size: 28px;">{{ fruits.1.description }}</h3> 
+    <h3 class="product-description" style="margin-top: -450px; margin-bottom: 200px; margin-left: 200px; width:650px; font-size: 28px;">{{ fruit.description }}</h3> 
     <div class="main_btn">
-        <a href="{% url 'add_to_cart' fruits.1.id %}" class="order-now-btn">Add to Cart</a>
+        <a href="{% url 'add_to_cart' fruit.id %}" class="order-now-btn">Add to Cart</a>
         <i class="fa-solid fa-angle-right"></i>
     </div>
 

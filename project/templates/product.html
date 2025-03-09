@@ -17,6 +17,7 @@
                             <th>Quantity</th>
                             <th>Description</th>
                             <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,9 @@
                             <td>{{ product.description }}</td>
                             <td>
                                 <a href="{% url 'edit_product' product.id %}" style="text-decoration: none; color: black;">Edit</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'remove_product' product.id %}" style="text-decoration: none; color: black;">Delete</a>
                             </td>
                         </tr>
                         {% endfor %}

@@ -47,8 +47,9 @@ def login_view(request):
     return render(request, 'auth.html')
 
 def home(request):
-    fruits = Fruits.objects.all().order_by("-id")
-    return render(request, 'index.html', {"fruits": fruits})
+    fruit = Fruits.objects.get(id=1)
+    fruits = Fruits.objects.all().order_by("-id")[:8]
+    return render(request, 'index.html', {"fruits": fruits, "fruit":fruit})
 
 def logout(request):
     auth_logout(request)
@@ -248,12 +249,14 @@ def add_product(request):
             image=image
         )
         product.save()
+        return redirect('product')
 
-        # Redirect to the product list page
-        return redirect('product_list')
-
-    # Render the add product form
     return render(request, 'add_product.html')
+
+def remove_product(request, product_id):
+    product = get_object_or_404(Fruits, id=product_id)
+    product.delete()
+    return redirect('product')
 
 @login_required
 def place_order(request):

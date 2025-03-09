@@ -5,6 +5,14 @@ from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login , logout as auth_logout, update_session_auth_hash
 from .models import *
+from django.db.models import Sum
+
+def get_total_cart_items(user):
+    user_cart = Cart.objects.filter(user=user).first()
+    total_cart_items = 0
+    if user_cart:
+        total_cart_items = CartItem.objects.filter(cart=user_cart).aggregate(total_items=Sum('quantity'))['total_items'] or 0
+    return total_cart_items
 
 def signup(request):
     if request.method == 'POST':
@@ -144,30 +152,34 @@ def remove_from_cart(request, fruit_id):
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-def profile(request):
-    return render(request, 'profile.html')
-
-def order(request):
-    return render(request, 'order.html')
+@login_required
+def order_history(request):
+    # Fetch all orders for the logged-in user
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')  # Order by most recent
+    return render(request, 'order.html', {'orders': orders})
 
 def about(request):
     return render(request, 'about.html')
 
-def contact(request):
-    return render(request, 'contact.html')
+
 
 def available(request):
     fruits = Fruits.objects.all()
     return render(request, 'available.html',{"fruits" : fruits})
 
+
 @login_required
 def dashboard(request):
-    product = Fruits.objects.all()
-
-    return render(request, "dash_home.html", {"products":product})
+    product = Fruits.objects.all()[:5]
+    order = Order.objects.all()[:7]
+    totaluser = User.objects.count()
+    total_sales = Order.objects.aggregate(total_sales=Sum('total_price'))['total_sales'] or 0
+    totalProducts = Fruits.objects.count()
+    return render(request, "dash_home.html", {"products":product,  "orders":order, "totalUsers":totaluser, 'totalSales': total_sales, "totalProduct":totalProducts})
 
 def order_dash(request):
-    return render(request, "order_dash.html")
+    order = Order.objects.all()
+    return render(request, "order_dash.html", {"orders":order})
 
 def product(request):
     product = Fruits.objects.all()
@@ -176,3 +188,102 @@ def product(request):
 def user(request):
     user = User.objects.all()
     return render(request, "user.html", {"users" : user})
+
+
+def edit_product(request, product_id):
+    product = get_object_or_404(Fruits, id=product_id)
+
+    if request.method == 'POST':
+        product.name = request.POST.get('name')
+        product.price = request.POST.get('price')
+        product.stock = request.POST.get('stock')
+        product.description = request.POST.get('description')
+
+        if 'image' in request.FILES:
+            product.image = request.FILES['image']
+
+        product.save()
+
+        return redirect('product')
+
+    return render(request, 'edit_product.html', {'product': product})
+
+def edit_user(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+
+    if request.method == 'POST':
+        user.username = request.POST.get('username')
+        user.email = request.POST.get('email')
+        user.save()
+        return redirect('user')
+
+    return render(request, 'edit_user.html', {'user': user})
+
+def profile(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+
+    if request.method == 'POST':
+        user.username = request.POST.get('username')
+        user.email = request.POST.get('email')
+        user.save()
+        return redirect('user')
+
+    return render(request, 'profile.html', {'user': user})
+
+def add_product(request):
+    if request.method == 'POST':
+        # Get data from the form
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        stock = request.POST.get('stock')
+        description = request.POST.get('description')
+        image = request.FILES.get('image')
+
+        # Save the new product
+        product = Fruits(
+            name=name,
+            price=price,
+            stock=stock,
+            description=description,
+            image=image
+        )
+        product.save()
+
+        # Redirect to the product list page
+        return redirect('product_list')
+
+    # Render the add product form
+    return render(request, 'add_product.html')
+
+@login_required
+def place_order(request):
+    if request.method == 'POST':
+        cart = get_object_or_404(Cart, user=request.user, is_paid=False)
+
+        shipping_address = request.POST.get('shipping_address')
+        if not shipping_address:
+            return render(request, 'cart.html', {'error': 'Please provide a shipping address.'})
+
+        payment_method = 'Cash on Delivery'
+
+        total_price = sum(item.total_price for item in cart.items.all())
+
+        order = Order.objects.create(
+            user=request.user,
+            cart=cart,
+            shipping_address=shipping_address,  
+            payment_method=payment_method,
+            total_price=total_price
+        )
+
+        cart.is_paid = True
+        cart.save()
+
+        return redirect('order_confirmation', order_id=order.id)
+
+    return redirect('cart')
+
+@login_required
+def order_confirmation(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    return render(request, 'order_confirmation.html', {'order': order})

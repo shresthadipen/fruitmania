@@ -138,12 +138,6 @@ section .main .men_text h2 span {
     font-size: 25px;
 }
 
-section .main .main_image img {
-    position: relative;
-    width: 650px;
-    margin-left: 200px;
-}
-
 section p {
     overflow: hidden;
     width: 550px;
@@ -417,4 +411,40 @@ footer .bottom-bar p {
 .field:focus {
     border: 2px solid #68d66f;
     background: #fff;
+}
+.main_image img {
+    width: 500px;      /* Set width to 800px */
+    height: 500px;     /* Set height to 800px */
+    object-fit: cover; /* Ensures the image covers the space without distortion */
+}
+
+.product-description {
+    text-align: center;
+    padding: 20px;
+}
+
+.product-description h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.product-description p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.product-description h3 {
+    font-size: 1.3em;
+    color: #d9534f;
+}
+
+.av_image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.av_info p {
+    font-size: 1.1em;
+    color: #555;
 }

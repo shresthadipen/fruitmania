@@ -97,7 +97,8 @@ body {
     gap: 10px;
     justify-content: flex-end;
 }
-.product-management .actions button {
+.add-product {
+    text-decoration: none;
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
@@ -105,7 +106,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
 }
-.product-management .actions button:hover {
+.add-product:hover {
     background-color: #45a049;
 }
 .recent-orders table {

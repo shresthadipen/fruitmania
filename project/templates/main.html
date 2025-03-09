@@ -16,16 +16,18 @@
     <section id="Home">
         <nav>
             <div class="logo">
-                <img src="{% static 'img/image.png.png' %}" alt="">
+                <a href="{% url 'home' %}">
+
+                    <img src="{% static 'img/image.png.png' %}" alt="">
+                </a>
             </div>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'available' %}">Available</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
                 {% if user.is_authenticated %}
                 <li>
-                    <a href="{% url 'profile' %}">{{user.username|capfirst}}</a>
+                    <a href="{% url 'profile' user.id %}">{{user.username|capfirst}}</a>
                 </li>
                 <li>
                     <a href="{% url 'order' %}">Order</a>
@@ -40,9 +42,8 @@
                 {% endif %}
             </ul>
             <div class="icon">
-                <i class="fa-solid fa-magnifying-glass"></i>
                 <a href="{% url 'cart' %}"><i class="fa-solid fa-cart-shopping"></i></a>
-
+    
             </div>
         </nav>
         
@@ -67,7 +68,6 @@
             <div class="footer_content">
                 <h2>Our Services</h2>
                 <p>Fast Delivery</p>
-                <p>Easy Payment</p>
                 <p>24 Hour Services</p>
             </div>
         </div>

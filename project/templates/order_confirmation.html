@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/confirm.css' %}">
+    {% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="card">
+        <h2>Order Confirmation</h2>
+        <p>Thank you for your order!</p>
+        <div class="order-details">
+            <h3>Order Details</h3>
+            <h5><strong>Order ID:</strong> {{ order.id }}</h5>
+            <h5><strong>Total Price:</strong> ${{ order.total_price }}</p>
+            <h5><strong>Order Date:</strong> {{ order.created_at }}</h5>
+        </div>
+        <div class="order-items">
+            <h3>Items Ordered</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    {% for item in order.cart.items.all %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>${{ item.product.price }}</td>
+                        <td>${{ item.total_price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="{% url 'home' %}">
+            <button>Continue Shopping</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

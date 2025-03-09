@@ -32,7 +32,8 @@
                                     <div class="product-media">
                                         {% if cart_item.product.image %}
                                         <a href="#">
-                                            <img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.name }}" width="70"/>
+                                            <img src="{{ cart_item.product.image.url }}"
+                                                alt="{{ cart_item.product.name }}" width="70" />
                                         </a>
                                         {% endif %}
                                         <div class="product-info">
@@ -47,11 +48,14 @@
 
                                 <td class="cart-quantity">
                                     <div class="quantity-controls">
-                                        <a href="{% url 'minus_quantity' cart_item.product.id %}" class="decrease-btn">-</a>
+                                        <a href="{% url 'minus_quantity' cart_item.product.id %}"
+                                            class="decrease-btn">-</a>
 
-                                        <input type="text" value="{{ cart_item.quantity }}" class="quantity-input" readonly/>
+                                        <input type="text" value="{{ cart_item.quantity }}" class="quantity-input"
+                                            readonly />
 
-                                        <a href="{% url 'add_quantity' cart_item.product.id %}" class="increase-btn">+</a>
+                                        <a href="{% url 'add_quantity' cart_item.product.id %}"
+                                            class="increase-btn">+</a>
                                     </div>
                                 </td>
 
@@ -87,29 +91,31 @@
                             </li>
 
                             <li class="payment-option">
-                                <form method="POST" action="#">
-                                    <div class="address-selection">
-                                        {% if addresses %}
-                                        {% for address in addresses %}
-                                        <div class="address-item">
-                                            <input type="radio" name="address" value="{{ address.id }}">
-                                            <strong>Address {{ forloop.counter }}</strong><br>
-                                            {{ address.address }}
-                                        </div>
-                                        {% endfor %}
-                                        {% endif %}
+                                <!-- Form to Place Order -->
+                                <form method="POST" action="{% url 'place_order' %}">
+                                    {% csrf_token %}
+                                    
+                                    <!-- Display error message if address is missing -->
+                                    {% if error %}
+                                    <p class="error-message">{{ error }}</p>
+                                    {% endif %}
+
+                                    <!-- Address input field -->
+                                    <div class="total-item">
+                                        <label for="shipping_address"><strong>Shipping Address:</strong></label>
+                                        <input name="shipping_address" id="shipping_address" placeholder="Enter your shipping address here" required></textarea>
                                     </div>
 
                                     <div class="payment-selection">
                                         <label for="payment">Payment Option:</label>
-                                        <select id="payment" name="payment">
+                                        <select id="payment" name="payment_method" required>
                                             <option value="Cash">Cash on Delivery</option>
                                         </select>
                                     </div>
-
+                                    <BR></BR>
                                     <div class="submit-btn">
                                         <button type="submit" class="submit-btn-submit">
-                                            Submit
+                                            Place Order
                                         </button>
                                     </div>
                                 </form>
@@ -124,7 +130,7 @@
     {% else %}
     <div class="empty-cart">
         <h3>Your cart is empty.</h3>
-        <a href="#" class="continue-shopping-link">
+        <a href="{% url 'home' %}" class="continue-shopping-link">
             Continue shopping
         </a>
     </div>

@@ -6,11 +6,9 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('', views.home, name='home'),
     path("logout/", views.logout, name="logout"),
-	path('profile/', views.profile, name="profile"),
-	path('order/', views.order, name="order"),
+	path('order/', views.order_history, name="order"),
 	path('available/', views.available, name="available"),
 	path('about/', views.about, name="about"),
-	path('contact/', views.contact, name="contact"),
 	path('cart/', views.cart, name="cart"),
     path('add_quantity/<int:fruit_id>/', views.add_quantity, name='add_quantity'),   
 	path('add_to_cart/<int:fruit_id>/', views.add_to_cart, name="add_to_cart"),
@@ -22,7 +20,15 @@ urlpatterns = [
     path("order_dash/", views.order_dash, name="order_dash"),
     path("product/", views.product, name="product"),
     path("user/", views.user, name="user"),
+
+    path('edit_product/<int:product_id>/', views.edit_product, name='edit_product'),
+      path('edit_user/<int:user_id>/', views.edit_user, name='edit_user'),
+      path('profile/<int:user_id>/', views.profile, name='profile'),
+
+    path('add_product/', views.add_product, name='add_product'),
     
+     path('place_order/', views.place_order, name='place_order'),
+    path('order_confirmation/<int:order_id>/', views.order_confirmation, name='order_confirmation'),
 
 ]
 

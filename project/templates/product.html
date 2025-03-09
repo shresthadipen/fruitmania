@@ -3,42 +3,43 @@
 
 {% block content %}
 <div class="main-content">
-<div class="card">
-    <h2>Product List</h2>
-    <div class="product-management">
-        <div class="product-list">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Fruits Name</th>
-                        <th>Image</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Description</th>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for product in products %}
-                    <tr>
-                        <td>{{product.id}}</td>
-                        <td><img src="{{ product.image.url }}" alt="{{ product.name }}" width="100"></td>
-                        <td>{{ product.name}}</td>
-                        <td>{{ product.price}}</td>
-                        <td>{{ product.stock}}</td>
-                        <td>{{ product.description }}</td>
-                        <td>Edit</td>
-                    </tr>
-                    {% endfor %}
-                   
-                </tbody>
-            </table>
-        </div>
-        <div class="actions">
-            <button>Add New Product</button>
+    <div class="card">
+        <h2>Product List</h2>
+        <div class="product-management">
+            <div class="product-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Fruits Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Description</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product.id }}</td>
+                            <td><img src="{{ product.image.url }}" alt="{{ product.name }}" width="100"></td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>{{ product.stock }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>
+                                <a href="{% url 'edit_product' product.id %}" style="text-decoration: none; color: black;">Edit</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="actions">
+                <a href="{% url 'add_product' %}" class="add-product">Add New Product</a>
+            </div>
         </div>
     </div>
-</div>
 </div>
 {% endblock %}

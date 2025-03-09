@@ -1,13 +1,26 @@
 {% extends 'main.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/edit.css' %}">
+    {% endblock %}
+    
 {% block content %}
-<div>
-    <div class="profile-card">
-            <p>Username: {{ user.username }}</p>
-            <p>Email: {{ user.email }}</p>
-            <a href="#" class="edit-btn">Edit Profile</a>
-            <a href="#" class="edit-btn">Change Password</a>
+<div class="main-content" style="margin-top: 150px;">
+    <div class="card">
+        <h2>Edit User</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" value="{{ user.username }}" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ user.email }}" required>
+            </div>
+            <button type="submit">Save Changes</button>
+        </form>
     </div>
 </div>
 {% endblock %}

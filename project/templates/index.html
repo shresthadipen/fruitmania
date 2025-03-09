@@ -2,36 +2,25 @@
 {% load static %}
 
 {% block content %}
-<div class="main">
-    <div class="men_text">
-        <h1>Fruits <span>Mania</span></h1>
-        <h2>Available here: <br><span class="typing"></span></h2>
+
+    <div class="main">
+        <div class="men_text" style="margin-right: 700px;margin-top: -300px;">
+            <h1>Fruits <span>Mania</span></h1>
+        </div>
+        <div class="main_image" style="margin-right: 200px;">
+            <img src="{{ fruits.1.image.url }}" alt="{{ fruits.1.name }}" class="product-image" style="width: 700px; height: 700px;">
+        
+        </div>
     </div>
-    <div class="main_image">
-        <img src="{% static 'img/image.png.png' %}" alt="">
+    <h3 class="product-description" style="margin-top: -450px; margin-bottom: 200px; margin-left: 200px; width:650px; font-size: 28px;">{{ fruits.1.description }}</h3> 
+    <div class="main_btn">
+        <a href="{% url 'add_to_cart' fruits.1.id %}" class="order-now-btn">Add to Cart</a>
+        <i class="fa-solid fa-angle-right"></i>
     </div>
-</div>
-<p>Fruits are natural foods that come from plants.
-    They are often sweet or sour and are packed with vitamins, minerals, and fiber, which help keep our bodies
-    healthy.
-    Fruits grow on trees, bushes, or vines and are usually eaten raw, although they can also be cooked or dried.
-    Common examples of fruits include apples, bananas, oranges, berries, and mangoes.
-    Eating a variety of fruits is good for overall health, as they provide essential nutrients and help keep our
-    immune system strong.</p>
-
-<div class="main_btn">
-    <a href="#">Order Now</a>
-    <i class="fa-solid fa-angle-right"></i>
-</div>
 
 
 
-
-</section>
-<script src="{% static 'js/script.js' %}"></script>
-
-
-<div class="available" id="Available">
+<div class="available" id="Available" style="margin-top: 150px;">
     <h1><span>Available</span></h1>
     <div class="av_box">
 

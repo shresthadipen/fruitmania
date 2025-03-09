@@ -1,0 +1,104 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div class="main-content">
+            <div class="header">
+                <h1>Welcome to Frutis Mania Dashboard</h1>
+            </div>
+            <!-- Metrics Section -->
+            <div class="metrics">
+                <div class="metric-card">
+                    <h3>Total Users</h3>
+                    <p>1,250</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Total Sales</h3>
+                    <p>$25,000</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Total Products</h3>
+                    <p>350</p>
+                </div>
+            </div>
+            <!-- Recent Orders -->
+            <div class="card">
+                <h2>Recent Orders</h2>
+                <div class="recent-orders">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ORDERID</th>
+                                <th>Customer Name</th>
+                                <th>Total Order</th>
+                                <th>Payment Method</th>
+                                <th>Total Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1001</td>
+                                <td>John Doe</td>
+                                <td>5 Items</td>
+                                <td>Credit Card</td>
+                                <td>$50.00</td>
+                            </tr>
+                            <tr>
+                                <td>1002</td>
+                                <td>Jane Smith</td>
+                                <td>3 Items</td>
+                                <td>PayPal</td>
+                                <td>$30.00</td>
+                            </tr>
+                            <tr>
+                                <td>1003</td>
+                                <td>Alice Johnson</td>
+                                <td>10 Items</td>
+                                <td>Cash on Delivery</td>
+                                <td>$100.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Product Management -->
+            <div class="card">
+                <h2>Product Management</h2>
+                <div class="product-management">
+                    <div class="product-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Fruits Name</th>
+                                    <th>Image</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Description</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in products %}
+                                <tr>
+                                    <td>{{product.id}}</td>
+                                    <td><img src="{{ product.image.url }}" alt="{{ product.name }}" width="100"></td>
+                                    <td>{{ product.name}}</td>
+                                    <td>{{ product.price}}</td>
+                                    <td>{{ product.stock}}</td>
+                                    <td>{{ product.description }}</td>
+                                    <td>Edit</td>
+                                </tr>
+                                {% endfor %}
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="actions">
+                        <button>Add New Product</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

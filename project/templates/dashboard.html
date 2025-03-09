@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frutis Mania Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>Frutis Mania</h2>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+            <a href="{% url 'user' %}">Users</a>
+            <a href="{% url 'product' %}">Products</a>
+            <a href="{% url 'order_dash' %}">Orders</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+        
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

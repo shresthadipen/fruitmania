@@ -1,0 +1,36 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div class="main-content">
+<div class="card">
+    <h2>Users List</h2>
+    <div class="product-management">
+        <div class="product-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Gmail</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>
+                                <a href="#">Edit</a> <!-- Add edit link/button here -->
+                            </td>
+                        </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

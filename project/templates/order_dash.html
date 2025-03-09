@@ -1,0 +1,46 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div class="main-content">
+    <div class="card">
+        <h2>Orders</h2>
+        <div class="recent-orders">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ORDERID</th>
+                        <th>Customer Name</th>
+                        <th>Total Order</th>
+                        <th>Payment Method</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1001</td>
+                        <td>John Doe</td>
+                        <td>5 Items</td>
+                        <td>Credit Card</td>
+                        <td>$50.00</td>
+                    </tr>
+                    <tr>
+                        <td>1002</td>
+                        <td>Jane Smith</td>
+                        <td>3 Items</td>
+                        <td>PayPal</td>
+                        <td>$30.00</td>
+                    </tr>
+                    <tr>
+                        <td>1003</td>
+                        <td>Alice Johnson</td>
+                        <td>10 Items</td>
+                        <td>Cash on Delivery</td>
+                        <td>$100.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
